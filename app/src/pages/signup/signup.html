@@ -1,7 +1,15 @@
 <ion-content padding>
-  <form class="form__email-and-password">
-  	<input name="email" type="email" />
-  	<input name="password" type="password" />
-  	<button (click)="signUpEmailPassword()">Submit</button>
+  <form [formGroup]="signUpWithUpEmailPassword_form" (ngSubmit)="signUpWithUpEmailPassword()">
+  	<ion-item>
+  		<ion-label>Email</ion-label>>
+  		<ion-input formControlName="email" type="email" [(ngModel)]="userCredentials.email"></ion-input>
+  	</ion-item>
+  	<ion-item>
+  		<ion-label>Password</ion-label>
+  		<ion-input formControlName="password" type="password" [(ngModel)]="userCredentials.password"></ion-input>
+  	</ion-item>
+  	<button ion-button full type="submit" [disabled]="!signUpWithUpEmailPassword_form.valid">Enviar</button>
   </form>
+
+  <div *ngIf="errorSignup">{{ errorSignup }}</div>
 </ion-content>
