@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
-import * as firebase from 'firebase';
+import * as firebase from 'firebase/app';
 
 @Component({
   selector: 'page-signup',
@@ -10,7 +10,6 @@ import * as firebase from 'firebase';
 })
 export class SignUpPage {
 	private signUpWithUpEmailPassword_form : FormGroup
-	private fbProvider : any = new firebase.auth.FacebookAuthProvider()
 	private errorSignup : any = null
 	private userCredentials : any = {
 		email: null,
@@ -41,11 +40,7 @@ export class SignUpPage {
   }
 
   private signUpWithFacebook () {
-  	this.fbProvider.setCustomParameters({
-  		'display': 'popup'
-  	})
-
-  	this.afAuth.auth.signInWithPopup(this.fbProvider)
+  	this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
   }
 
   private signUpWithUpEmailPassword () {
