@@ -1,15 +1,32 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Commando Cub - {{ "LOGIN" | translate }}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
 <ion-content padding>
   <form [formGroup]="signUpWithUpEmailPassword_form" (ngSubmit)="signUpWithUpEmailPassword()">
   	<ion-item>
-  		<ion-label>Email</ion-label>>
+  		<ion-label>{{ "EMAIL" | translate }}</ion-label>>
   		<ion-input formControlName="email" type="email" [(ngModel)]="userCredentials.email"></ion-input>
   	</ion-item>
   	<ion-item>
-  		<ion-label>Password</ion-label>
+  		<ion-label>{{ "PASSWORD" | translate }}</ion-label>
   		<ion-input formControlName="password" type="password" [(ngModel)]="userCredentials.password"></ion-input>
   	</ion-item>
-  	<button ion-button full type="submit" [disabled]="!signUpWithUpEmailPassword_form.valid">Enviar</button>
+  	<button ion-button full icon-left color="secondary" type="submit" [disabled]="!signUpWithUpEmailPassword_form.valid"><ion-icon name="md-paper-plane"></ion-icon>{{ "SUBMIT" | translate }}</button>
   </form>
+
+  <hr />
+  
+  <button ion-button full icon-left (click)="signUpWithFacebook()">
+  	<ion-icon name="logo-facebook"></ion-icon>FACEBOOK
+  </button>
+  <button ion-button full icon-left color="danger" (click)="singUpWithGoogle()">
+  	<ion-icon name="logo-google"></ion-icon>GOOGLE
+  </button>
 
   <div *ngIf="errorSignup">{{ errorSignup }}</div>
 </ion-content>

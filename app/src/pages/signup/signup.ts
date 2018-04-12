@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from 'firebase/app';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'page-signup',
@@ -19,8 +20,10 @@ export class SignUpPage {
   constructor(
   	public navCtrl: NavController,
   	private afAuth: AngularFireAuth,
-  	private formBuilder: FormBuilder
+  	private formBuilder: FormBuilder,
+  	private translate: TranslateService 
   ) {
+  	this.translate.setDefaultLang('es')
   	this.signUpWithUpEmailPassword_form = this.formBuilder.group({
   		email: [
   			'', 
@@ -39,8 +42,24 @@ export class SignUpPage {
   	})
   }
 
+  private singUpWithGoogle () {
+  	this.afAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+  	.then(res => {
+  		console.log(res)
+  	})
+  	.catch(err => {
+  		console.log(err)
+  	})
+  }
+
   private signUpWithFacebook () {
   	this.afAuth.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+  	.then(res => {
+  		console.log(res)
+  	})
+  	.catch(err => {
+  		console.log(err)
+  	})
   }
 
   private signUpWithUpEmailPassword () {
