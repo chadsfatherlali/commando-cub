@@ -5,4 +5,4 @@ cd /code/app
 
 npm install
 
-ionic serve -c --no-interactive
+ionic serve --all --no-interactive 
