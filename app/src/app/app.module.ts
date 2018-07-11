@@ -7,6 +7,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { AngularFireModule } from 'angularfire2';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+import { AngularFirestore } from 'angularfire2/firestore';
 
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
@@ -20,6 +21,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
 }
 
 export const firebaseConfig = {
+  projectId: 'commando-cub-test',
   apiKey: 'AIzaSyDG5bmQLBp27v60VLv1YWk5Y9pkChc2VeI',
   authDomain: 'commando-cub-test.firebaseapp.com',
   databaseURL: 'https://commando-cub-test.firebaseio.com',
@@ -59,6 +61,7 @@ export const firebaseConfig = {
     SplashScreen,
     AngularFireDatabase,
     AngularFireAuth,
+    AngularFirestore,
     {
       provide: ErrorHandler, 
       useClass: IonicErrorHandler

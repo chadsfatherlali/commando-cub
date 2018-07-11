@@ -8,4 +8,8 @@
 
 <ion-content padding>
   <button ion-button full [navPush]="signUpPage">{{ "LOGIN" | translate }}</button>
+  <h2>Un listado</h2>
+  <ul>
+  	<li *ngFor="let item of items | async">{{ item.name }} - {{ item.lastname }}</li>
+  </ul>
 </ion-content>
